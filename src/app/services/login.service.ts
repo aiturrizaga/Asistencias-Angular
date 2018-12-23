@@ -1,29 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import 'rxjs/add/operator/map';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
 
+  acceso: boolean;
+
   constructor(public http: HttpClient) {
     console.log('Servicio login listo..!!!');
   }
 
-  login() {
+  login(user: string, pass: string) {
     const url = 'http://rest.jcondori.com/Asistencias/v1/alumno/login';
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Headers': 'content-type, if-none-match',
-      'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Max-Age': '3600',
-      'Usuario': '76350841',
-      'Password': '76350841'
+      'Usuario': user,
+      'Password': pass
     });
-    this.http.get(url, { headers })
-      .subscribe(resp => {
-        console.log(resp);
+    return this.http.get(url, { headers })
+      .map((resp: any) => {
+        if (resp === false) {
+          console.log('El usuario no existe');
+        } else {
+          this.acceso = true;
+        }
       });
   }
 

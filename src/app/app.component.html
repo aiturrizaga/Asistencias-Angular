@@ -1,2 +1,2 @@
-<!-- <app-login></app-login> -->
-<app-template></app-template>
+<app-login *ngIf="!_loginService.acceso"></app-login>
+<app-template *ngIf="_loginService.acceso"></app-template>

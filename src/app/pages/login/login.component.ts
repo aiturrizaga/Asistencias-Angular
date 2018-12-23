@@ -8,11 +8,19 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public _loginService: LoginService) {
-    this._loginService.login();
-  }
+  user: string;
+  pass: string;
+
+  constructor(public _loginService: LoginService) { }
 
   ngOnInit() {
+  }
+
+  startSession() {
+    this._loginService.login(this.user, this.pass)
+      .subscribe(resp => {
+        console.log(resp);
+      });
   }
 
 }
