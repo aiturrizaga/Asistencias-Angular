@@ -9,9 +9,7 @@ export class LoginService {
 
   acceso: boolean;
 
-  constructor(public http: HttpClient) {
-    console.log('Servicio login listo..!!!');
-  }
+  constructor(public http: HttpClient) { }
 
   login(user: string, pass: string) {
     const url = 'http://rest.jcondori.com/Asistencias/v1/alumno/login';

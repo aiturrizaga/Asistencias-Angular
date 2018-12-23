@@ -9,9 +9,7 @@ export class AlumnoService {
 
   alumnos: any[] = [];
 
-  constructor(public http: HttpClient) {
-    console.log('Servicio Alumno listo..!!!');
-  }
+  constructor(public http: HttpClient) { }
 
   getData(codAlum: string) {
     const url = `http://rest.jcondori.com/Asistencias/v1/alternancia/detalle/${codAlum}`;

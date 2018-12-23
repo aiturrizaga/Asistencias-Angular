@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../../services/login.service';
+import { User } from '../../model/user.model';
+import { AlumnoService } from 'src/app/services/alumno.service';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +10,17 @@ import { LoginService } from '../../services/login.service';
 })
 export class LoginComponent implements OnInit {
 
-  user: string;
-  pass: string;
+  usuario: User = new User;
 
-  constructor(public _loginService: LoginService) { }
+  constructor(public _loginService: LoginService, public _alumnoService: AlumnoService) { }
 
   ngOnInit() {
   }
 
   startSession() {
-    this._loginService.login(this.user, this.pass)
-      .subscribe(resp => {
-        console.log(resp);
-      });
+    this._loginService.login(this.usuario.username, this.usuario.password)
+      .subscribe();
+    this._alumnoService.getData(this.usuario.username).subscribe();
   }
 
 }

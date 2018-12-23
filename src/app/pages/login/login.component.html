@@ -7,13 +7,13 @@
       <div>
         <div class="form-group">
           <label for="txtUser">Usuario</label>
-          <input type="email" class="form-control" id="txtUser" placeholder="Usuario" [(ngModel)]="user">
+          <input type="email" class="form-control" id="txtUser" placeholder="Usuario" [(ngModel)]="usuario.username">
         </div>
         <div class="form-group">
           <label for="txtPass">Contraseña</label>
-          <input type="password" class="form-control" id="txtPass" placeholder="Contraseña" [(ngModel)]="pass">
+          <input type="password" class="form-control" id="txtPass" placeholder="Contraseña" [(ngModel)]="usuario.password">
         </div>
-        <button (click)="startSession()" class="btn btn-primary btn-block">Iniciar sesión</button>
+        <button (click)="startSession()" type="submit" class="btn btn-primary btn-block">Iniciar sesión</button>
       </div>
     </div>
   </div>
